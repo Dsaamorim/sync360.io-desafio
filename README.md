@@ -20,4 +20,4 @@ npm install -g @angular/cli
 # 5. Execute o projeto
 ng serve
 
-![Angular-Node-MySQL](https://github.com/Dsaamorim/Login-Angular-MongoBD/blob/main/Angular-Node-MySQL.gif?raw=true)
+![Angular-Node-MySQL](https://github.com/Dsaamorim/Angular-Node-MySQL/blob/main/Angular-Node-MySQL.gif?raw=true)
