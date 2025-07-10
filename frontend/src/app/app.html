@@ -1,0 +1,216 @@
+<div class="container">
+  <div class="alert alert-error" *ngIf="erro">
+    {{ erro }}
+    <button (click)="erro = ''" class="close-btn">&times;</button>
+  </div>
+
+  <div class="alert alert-success" *ngIf="sucesso">
+    Dados salvos com sucesso!
+  </div>
+
+  <div class="profile-card" *ngIf="!editando && !carregando">
+    <div class="profile-header">
+      <div class="avatar">
+        <img [src]="usuario.imagem_perfil" 
+             alt="Foto de {{ usuario.nome }}"
+             (error)="handleImageError($event)"
+             *ngIf="usuario.imagem_perfil; else defaultAvatar">
+        <ng-template #defaultAvatar>
+          <div class="avatar-initial">{{ usuario.nome.charAt(0) || 'U' }}</div>
+        </ng-template>
+      </div>
+      <h1>{{ usuario.nome }}</h1>
+      <p class="subtitle">Perfil do Usuário</p>
+    </div>
+
+    <div class="profile-body">
+      <hr class="divider">
+
+      <div class="section">
+        <h2><i class="bi bi-info-circle"></i> Informações Pessoais</h2>
+        <div class="info-item">
+          <span class="info-label">Nome:</span>
+          <span class="info-value">{{ usuario.nome }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Idade:</span>
+          <span class="info-value">{{ usuario.idade !== null ? usuario.idade + ' anos' : 'Não informada' }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Endereço:</span>
+          <span class="info-value">
+            <span *ngIf="usuario.rua">{{ usuario.rua }}, </span>
+            <span *ngIf="usuario.rua">{{ usuario.numero }}</span>
+            <span *ngIf="usuario.rua && usuario.bairro">, </span>
+            <span *ngIf="usuario.bairro">{{ usuario.bairro }}</span>
+            <span *ngIf="usuario.bairro && usuario.cidade">, </span>
+            <span *ngIf="usuario.cidade">{{ usuario.cidade }}</span>
+            <span *ngIf="usuario.cidade && usuario.estado"> - </span>
+            <span *ngIf="usuario.estado">{{ usuario.estado }}</span>
+            <span *ngIf="!usuario.rua && !usuario.bairro && !usuario.numero && !usuario.cidade && !usuario.estado">
+              Não informado
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><i class="bi bi-file-text"></i> Biografia</h2>
+        <p class="bio">{{ usuario.biografia }}</p>
+      </div>
+
+      <div class="edit-btn-container">
+        <button class="edit-btn" (click)="editando = true">
+          <i class="bi bi-pencil" style="margin-right: 8px;"></i>
+          Editar Perfil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="edit-card" *ngIf="editando && !carregando">
+    <div class="profile-header">
+      <div class="avatar">
+        <label for="file-upload" class="avatar-upload">
+          <img [src]="usuario.imagem_perfil" 
+               alt="Foto de {{ usuario.nome }}"
+               (error)="handleImageError($event)"
+               *ngIf="usuario.imagem_perfil; else defaultAvatar">
+          <ng-template #defaultAvatar>
+            <div class="avatar-initial">{{ usuario.nome.charAt(0) || 'U' }}</div>
+          </ng-template>
+          <div class="avatar-overlay">
+            <i class="bi bi-camera"></i>
+          </div>
+        </label>
+        <input id="file-upload" type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;">
+      </div>
+      <h1>Editar Perfil</h1>
+      <p class="subtitle">Atualize suas informações</p>
+    </div>
+
+    <div class="profile-body">
+      <form #userForm="ngForm" (ngSubmit)="salvarUsuario(userForm)">
+        <div class="section">
+          <h2><i class="bi bi-info-circle"></i> Informações Pessoais</h2>
+          
+          <div class="form-group">
+            <label for="nome">Nome*</label>
+            <input type="text" id="nome" [(ngModel)]="usuario.nome" name="nome" 
+                   required minlength="3" #nomeInput="ngModel"
+                   [class.is-invalid]="submitted && nomeInput.invalid"
+                   (keypress)="apenasLetras($event)">
+            <div *ngIf="submitted && nomeInput.invalid" class="invalid-feedback">
+              <span *ngIf="nomeInput.errors?.['required']">Nome é obrigatório</span>
+              <span *ngIf="nomeInput.errors?.['minlength']">Mínimo 3 caracteres</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="idade">Idade*</label>
+            <input type="number" id="idade" [(ngModel)]="usuario.idade" name="idade"
+                   required #idadeInput="ngModel"
+                   min="18" max="120" 
+                   [class.is-invalid]="submitted && idadeInput.invalid">
+            <div *ngIf="submitted && idadeInput.invalid" class="invalid-feedback">
+              <span *ngIf="idadeInput.errors?.['required']">Idade é obrigatória</span>
+              <span *ngIf="idadeInput.errors?.['min']">Idade mínima: 18 anos</span>
+              <span *ngIf="idadeInput.errors?.['max']">Idade máxima: 120 anos</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="rua">Rua*</label>
+            <input type="text" id="rua" [(ngModel)]="usuario.rua" name="rua"
+                   required #ruaInput="ngModel"
+                   [class.is-invalid]="submitted && ruaInput.invalid"
+                   (keypress)="apenasLetras($event)">
+            <div *ngIf="submitted && ruaInput.invalid" class="invalid-feedback">
+              <span *ngIf="ruaInput.errors?.['required']">Rua é obrigatória</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="numero">Número*</label>
+            <input type="numero" id="numero" [(ngModel)]="usuario.numero" name="numero"
+                   required #numeroInput="ngModel"
+                   min="18" max="120" 
+                   [class.is-invalid]="submitted && numeroInput.invalid">
+            <div *ngIf="submitted && numeroInput.invalid" class="invalid-feedback">
+              <span *ngIf="numeroInput.errors?.['required']">Número é obrigatório</span>
+            </div>
+          </div>          
+          
+          <div class="form-group">
+            <label for="bairro">Bairro*</label>
+            <input type="text" id="bairro" [(ngModel)]="usuario.bairro" name="bairro"
+                   required #bairroInput="ngModel"
+                   [class.is-invalid]="submitted && bairroInput.invalid"
+                   (keypress)="apenasLetras($event)">
+            <div *ngIf="submitted && bairroInput.invalid" class="invalid-feedback">
+              <span *ngIf="bairroInput.errors?.['required']">Bairro é obrigatório</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="cidade">Cidade*</label>
+            <input type="text" id="cidade" [(ngModel)]="usuario.cidade" name="cidade"
+                   required minlength="3" #cidadeInput="ngModel"
+                   [class.is-invalid]="submitted && cidadeInput.invalid"
+                   (keypress)="apenasLetras($event)">
+            <div *ngIf="submitted && cidadeInput.invalid" class="invalid-feedback">
+              <span *ngIf="cidadeInput.errors?.['required']">Cidade é obrigatória</span>
+              <span *ngIf="cidadeInput.errors?.['minlength']">Mínimo 3 caracteres</span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="estado">Estado*</label>
+            <select id="estado" [(ngModel)]="usuario.estado" name="estado"
+                    required #estadoInput="ngModel"
+                    [class.is-invalid]="estadoInput.invalid && estadoInput.touched">
+              <option value="">Selecione um estado</option>
+              <option *ngFor="let estado of estadosBrasileiros" [value]="estado.sigla">
+                {{estado.nome}} ({{estado.sigla}})
+              </option>
+            </select>
+            <div *ngIf="estadoInput.invalid && estadoInput.touched" class="invalid-feedback">
+              <span *ngIf="estadoInput.errors?.['required']">Estado é obrigatório</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="section">
+          <h2><i class="bi bi-file-text"></i> Biografia</h2>
+          <div class="form-group">
+            <label for="biografia">Biografia*</label>
+            <textarea id="biografia" [(ngModel)]="usuario.biografia" name="biografia" 
+                      rows="5" required minlength="20" #biografiaInput="ngModel"
+                      [class.is-invalid]="submitted && biografiaInput.invalid"></textarea>
+            <div *ngIf="submitted && biografiaInput.invalid" class="invalid-feedback">
+              <span *ngIf="biografiaInput.errors?.['required']">Biografia é obrigatória</span>
+              <span *ngIf="biografiaInput.errors?.['minlength']">Mínimo 20 caracteres</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-cancel" (click)="editando = false">
+            Cancelar
+          </button>
+          <button type="submit" class="btn btn-save" 
+                  [disabled]="checkingForm || (userForm.invalid && submitted)">
+            {{ checkingForm ? 'Validando...' : 'Salvar Alterações' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="loading" *ngIf="carregando">
+    <div class="spinner"></div>
+    <p>Carregando dados...</p>
+  </div>
+</div>
