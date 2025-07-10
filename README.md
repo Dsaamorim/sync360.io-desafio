@@ -20,5 +20,3 @@ npm install -g @angular/cli
 # 5. Execute o projeto
 ng serve
 
-![Angular-Node-MySQL](https://github.com/Dsaamorim/sync360.io-desafio
-/blob/main/Angular-Node-MySQL.gif?raw=true)
