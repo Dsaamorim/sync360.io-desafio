@@ -2,10 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "Sync360/frontend/angular.json",
+      "src": "frontend/angular.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "Sync360/frontend/dist/frontend"
+        "distDir": "frontend/dist/frontend"
       }
     }
   ],
