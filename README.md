@@ -1,25 +1,44 @@
-# Sync360.io Desafio
+# 🚀 Sync360.io Desafio
 
-## Instalação
+![Banner](https://github.com/Dsaamorim/sync360.io-desafio/blob/main/Angular-Node-MySQL.gif?raw=true)
 
-Siga os passos abaixo para rodar o projeto localmente:
+Projeto fullstack desenvolvido com Angular (frontend), Node.js (backend) e MySQL para o desafio técnico da Sync360.
+
+## 🔗 Links Úteis
+
+- **Demo Online**: [https://sync360-io-desafio.vercel.app](https://sync360-io-desafio-u931-5mfzzx8k9-dsaamorims-projects.vercel.app/)
+- **Repositório**: [github.com/Dsaamorim/sync360.io-desafio](https://github.com/Dsaamorim/sync360.io-desafio)
+
+## 🛠️ Tecnologias
+
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+## 📦 Instalação Local
+
+Siga estes passos para executar o projeto em sua máquina:
+
+### Pré-requisitos
+- Node.js (v16+)
+- npm ou yarn
+- Angular CLI
+- MySQL instalado
+
+### Passo a Passo
 
 ```bash
-# 1. Clone o repositório
+# Clone o repositório
 git clone https://github.com/Dsaamorim/sync360.io-desafio.git
+cd sync360.io-desafio
 
-# 2. Acesse a pasta do frontend
-cd sync360.io-desafio/frontend
-
-# 3. Instale as dependências do projeto
+# Instale as dependências do frontend
+cd frontend
 npm install
 
-# 4. Instale o Angular CLI globalmente (caso ainda não tenha)
+# Instale o Angular CLI globalmente (caso não tenha)
 npm install -g @angular/cli
 
-# 5. Execute o projeto
+# Inicie o servidor de desenvolvimento
 ng serve
-```bash
-https://sync360-io-desafio-u931-5mfzzx8k9-dsaamorims-projects.vercel.app/
-
-![Angular-Node-MySQL](https://github.com/Dsaamorim/sync360.io-desafio/blob/main/Angular-Node-MySQL.gif?raw=true)
