@@ -264,13 +264,13 @@ body {
 
 /* Form */
 .form-group {
-  margin-bottom: var(--space-xxxl); /* espaçamento entre grupos (label+campo) */
+  margin-bottom: var(--space-xxxl);
   position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.25rem; /* afastamento maior entre label e campo */
+  margin-bottom: 0.25rem;
   font-weight: 600;
   color: var(--primary-dark);
 }
