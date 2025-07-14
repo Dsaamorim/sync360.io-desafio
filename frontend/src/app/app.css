@@ -187,6 +187,7 @@ body {
 
 .section h2 i {
   font-size: 1.25em;
+  margin-right: 0.5rem;
 }
 
 /* Info */
@@ -213,6 +214,7 @@ body {
   flex-grow: 1;
   padding: var(--space-xs) 0;
   line-height: 1.6;
+  margin-top: var(--space-lg);
 }
 
 .bio {
@@ -251,6 +253,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: var(--box-shadow);
+  margin-top: 1rem;
 }
 
 .edit-btn:hover {
@@ -261,13 +264,13 @@ body {
 
 /* Form */
 .form-group {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xxxl); /* espaçamento entre grupos (label+campo) */
   position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.25rem; /* afastamento maior entre label e campo */
   font-weight: 600;
   color: var(--primary-dark);
 }
@@ -281,6 +284,7 @@ body {
   border-radius: var(--border-radius);
   font-size: 1rem;
   transition: all 0.3s ease;
+  margin-bottom: 0.35rem;
 }
 
 .form-group input:focus,
@@ -298,9 +302,9 @@ body {
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
 }
 
 .btn {
@@ -331,6 +335,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: var(--box-shadow);
+  margin: 0;
 }
 
 .btn-cancel:hover,

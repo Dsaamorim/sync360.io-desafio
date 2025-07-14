@@ -27,7 +27,7 @@
       <hr class="divider">
 
       <div class="section">
-        <h2><i class="bi bi-info-circle"></i> Informações Pessoais</h2>
+        <h2><i class="bi bi-info-circle"> </i> Informações Pessoais</h2>
         <div class="info-item">
           <span class="info-label">Nome:</span>
           <span class="info-value">{{ usuario.nome }}</span>
@@ -198,10 +198,12 @@
 
         <div class="form-actions">
           <button type="button" class="btn btn-cancel" (click)="editando = false">
+            <i class="bi bi-x-circle" style="margin-right: 8px;"></i>
             Cancelar
           </button>
           <button type="submit" class="btn btn-save" 
                   [disabled]="checkingForm || (userForm.invalid && submitted)">
+            <i class="bi bi-check-circle" style="margin-right: 8px;"></i>      
             {{ checkingForm ? 'Validando...' : 'Salvar Alterações' }}
           </button>
         </div>
