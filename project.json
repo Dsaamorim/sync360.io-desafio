@@ -1,0 +1,9 @@
+{
+  "settings": {
+    "framework": "angular",
+    "rootDirectory": "frontend",
+    "outputDirectory": "dist/browser",
+    "buildCommand": "npm run build",
+    "installCommand": "npm install"
+  }
+}
