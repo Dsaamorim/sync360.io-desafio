@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "build": "ng build --configuration production --base-href=/ --deploy-url=/",
+    "build": "ng build --configuration production",
     "serve": "serve dist -s -l 5000",
     "clean": "rm -rf dist",
     "vercel-build": "npm run clean && npm run build",
