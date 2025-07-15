@@ -5,7 +5,7 @@
     "ng": "ng",
     "build": "ng build --output-path=dist --base-href=/ --deploy-url=/",
     "serve": "serve dist -s -l 5000",
-    "clean": "rmdir /s /q dist",
+    "clean": "rm -rf dist",
     "vercel-build": "npm run clean && npm run build",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
