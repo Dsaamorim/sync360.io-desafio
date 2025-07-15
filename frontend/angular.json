@@ -15,7 +15,7 @@
         "build": {
             "builder": "@angular-devkit/build-angular:application",
             "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/browser",
             "baseHref": "/",
             "deployUrl": "/",
             "deleteOutputPath": true,
