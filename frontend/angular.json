@@ -13,9 +13,11 @@
 
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/frontend",
+            "builder": "@angular-devkit/build-angular:application",
+            "options": {
+            "outputPath": "dist/frontend/browser",
+            "baseHref": "/",
+            "deployUrl": "/",  
             "index": "src/index.html",
             "polyfills": [ "zone.js" ],
             "tsConfig": "tsconfig.app.json",

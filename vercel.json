@@ -5,17 +5,14 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/frontend"
+        "distDir": "dist/frontend/browser" 
       }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/dist/frontend/index.html",
-      "headers": {
-        "Cache-Control": "no-cache"
-      }
+      "src": "/(.*)", 
+      "dest": "/dist/frontend/browser/index.html"  
     }
   ]
 }
