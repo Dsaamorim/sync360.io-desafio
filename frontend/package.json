@@ -4,8 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path=dist/frontend/browser --base-href=/",
-    "vercel-build": "npm run build",
+    "build": "ng build --output-path=dist/frontend/browser --base-href=/ --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
