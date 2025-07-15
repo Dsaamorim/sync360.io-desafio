@@ -6,7 +6,7 @@ Projeto fullstack desenvolvido com Angular (frontend), Node.js (backend) e MySQL
 
 ## 🔗 Links Úteis
 
-- **Demo Online**: [[https://sync360-io-desafio.vercel.app](https://sync360-io-desafio-nj31.vercel.app/)](https://sync360-io-desafio-u931-5mfzzx8k9-dsaamorims-projects.vercel.app/)
+- **Demo Online**: [[https://sync360-io-desafio.vercel.app](https://sync360-io-desafio-nj31.vercel.app/)]
 - **Repositório**: [github.com/Dsaamorim/sync360.io-desafio](https://github.com/Dsaamorim/sync360.io-desafio)
 
 ## 🛠️ Tecnologias
