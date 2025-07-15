@@ -1,18 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/angular",
-      "config": {
-        "distDir": "dist/frontend"
-      }
+  "build": {
+    "env": {
+      "NG_BUILD_OUTPUT_PATH": "dist/frontend"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/dist/frontend/index.html"
+      "dest": "/dist/frontend/browser/index.html"
     }
   ]
 }
